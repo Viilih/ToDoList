@@ -1,0 +1,111 @@
+:root {
+	--dark: #374151;
+	--darker: #1f2937;
+	--darkest: #111827;
+	--grey: #6b7280;
+	--pink: #ec4899;
+	--purple: #8b5cf6;
+	--light: #eee;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--darker);
+	color: var(--light);
+}
+
+.content {
+	max-width: 500px;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: var(--darkest);
+	padding: 55px;
+	border-radius: 15px;
+}
+.content h1 {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.content .top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 37px;
+}
+.content .top input {
+	width: 300px;
+	padding: 12px;
+	outline: none;
+	border: 1px solid transparent;
+	border-radius: 12px;
+	background-color: var(--darker);
+	color: white;
+	font-size: 1.2rem;
+	line-height: 2rem;
+}
+.content .top input::placeholder {
+	color: var(--grey);
+}
+
+.content .top .addTask {
+	width: 40px;
+	height: 40px;
+	border-radius: 80px;
+	border: 1px solid transparent;
+	background-color: var(--darker);
+	color: white;
+	cursor: pointer;
+	transition: 0.6s;
+}
+.content .top .addTask:hover {
+	background-color: lightslategray;
+}
+
+ul {
+	list-style: none;
+}
+
+.content .tasks {
+	background-color: var(--darker);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	border-radius: 12px;
+	margin-top: 20px;
+}
+.content .tasks .task {
+	font-size: 1.1rem;
+}
+
+.content .tasks .btnAction {
+	width: 36px;
+	height: 36px;
+	border-radius: 80px;
+	border: 1px solid transparent;
+	background-color: var(--darkest);
+	color: white;
+	cursor: pointer;
+	transition: 0.6s;
+	margin-right: 15px;
+}
+.taskText {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 245px;
+	white-space: nowrap;
+}
+.content .tasks .edit:hover {
+	background-color: rgb(255, 170, 137);
+}
+.content .tasks .delete:hover {
+	background-color: rgb(241, 79, 79);
+}
