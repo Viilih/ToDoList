@@ -10,7 +10,7 @@ inputTask.addEventListener('keypress', e => {
 			id: idGenerator(),
 		};
 		// Add the task on the ul
-		addTasks(task);
+		addTasks(task, true);
 		inputTask.value = '';
 	}
 });
@@ -22,7 +22,7 @@ addTask.addEventListener('click', e => {
 		id: idGenerator(),
 	};
 	// Add the task on the ul
-	addTasks(task);
+	addTasks(task, true);
 	inputTask.value = '';
 });
 
@@ -33,13 +33,16 @@ function idGenerator() {
 // Function to put the task on the HTML
 // Lógica para adicionar as tarefas :
 // Já possuo a ul, basta criar os seguintes componentes: li --> span --> div(btns) --> button (btnAction edit/delete) --> i
-function addTasks(task) {
+function addTasks(task, save = false) {
+	// save = false
 	let li = createTagLi(task);
 	taskList.appendChild(li);
+	if (save) saveTasks();
 }
 
 function createTagLi(task) {
 	let li = document.createElement('li');
+	li.id = task.id;
 
 	// Creating the span element
 	let span = document.createElement('span');
@@ -51,14 +54,14 @@ function createTagLi(task) {
 	div.classList.add('btns');
 
 	// Creating the edit Button element
-	let editButton = document.createElement('button');
-	editButton.classList.add('btnAction');
-	editButton.classList.add('edit');
-	editButton.innerHTML = '<i class="fa fa-pencil"></i>';
+	let doButton = document.createElement('button');
+	doButton.classList.add('btnAction');
+	doButton.classList.add('do');
+	doButton.innerHTML = '<i class="fa fa-check"></i>';
 
-	//Make the edit button edit the task
+	//Make the done button done the task
 	// get the id in order to get the specific task to edit/delete
-	editButton.setAttribute('onclick', 'edit(' + task.id + ')');
+	doButton.setAttribute('onclick', 'done(' + task.id + ')');
 
 	// Creating the delete Button element
 
@@ -72,7 +75,7 @@ function createTagLi(task) {
 	delButton.setAttribute('onclick', 'del(' + task.id + ')');
 
 	// Putting the buttons inside the div
-	div.appendChild(editButton);
+	div.appendChild(doButton);
 	div.appendChild(delButton);
 
 	//Putting the span and div elements inside li element
@@ -83,10 +86,48 @@ function createTagLi(task) {
 	return li;
 }
 
-function edit(taskId) {
-	alert(taskId);
+function done(taskId) {
+	let li = document.getElementById('' + taskId + '');
+	let task = li.firstChild;
+	task.classList.toggle('completed');
 }
 
 function del(taskId) {
-	alert(taskId);
+	let li = document.getElementById('' + taskId + '');
+	taskList.removeChild(li);
+	saveTasks();
 }
+
+function saveTasks() {
+	const liTasks = taskList.querySelectorAll('li');
+	const listOfTasks = [];
+
+	for (let task of liTasks) {
+		let liText = task.innerText;
+		listOfTasks.push(liText);
+	}
+
+	const tasksJSON = JSON.stringify(listOfTasks);
+	if (tasksJSON) {
+		localStorage.setItem('tasksJSON', tasksJSON);
+	}
+}
+
+function addSaveTasks() {
+	const tasks = localStorage.getItem('tasksJSON');
+	const listOfTasks = JSON.parse(tasks);
+	for (let taskName of listOfTasks) {
+		const task = {
+			name: taskName,
+			id: idGenerator(),
+		};
+		createTagLi(task);
+
+		addTasks(task, false);
+	}
+	// for (let task of listOfTasks) {
+	//
+	// }
+}
+
+addSaveTasks();

@@ -103,9 +103,15 @@ ul {
 	width: 245px;
 	white-space: nowrap;
 }
-.content .tasks .edit:hover {
-	background-color: rgb(255, 170, 137);
+.content .tasks .do:hover {
+	background-color: lightgreen;
 }
 .content .tasks .delete:hover {
 	background-color: rgb(241, 79, 79);
+}
+
+.content .tasks .completed {
+	color: rgb(98, 221, 98);
+	text-decoration: line-through;
+	transition: 0.6;
 }
