@@ -1,0 +1,22 @@
+@media (max-width: 600px) {
+	.content .top {
+		flex-direction: column;
+	}
+
+	.content .top .addTask {
+		margin-top: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.content .tasks {
+		flex-direction: column;
+	}
+	.taskText {
+		text-align: center;
+	}
+
+	.btns {
+		margin-left: 14px;
+	}
+}
