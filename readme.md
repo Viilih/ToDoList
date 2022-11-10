@@ -3,6 +3,7 @@
 <p align="justify"> Project to create a task list with some funcionalities and responsive for other screens</p>
 
 :trophy: Add/Remove tasks from list
+
 :trophy: Mark the task as done
 
 Project Status: Completed :heavy_check_mark:
