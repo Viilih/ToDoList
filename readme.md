@@ -8,8 +8,6 @@
 
 Project Status: Completed :heavy_check_mark:
 
-## Deploy da Aplicação com Netlify: :dash:
-
-/* Aqui estamos usando a tag Quotes do markdown*/
+## Application deployed with netlify: :dash:
 
 https://viliihtodolist.netlify.app/
